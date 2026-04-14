@@ -1,0 +1,41 @@
+/* ProductCard Component Styles */
+
+.card {
+  @apply card-product;
+}
+
+.image {
+  @apply image-container;
+}
+
+.imageWrapper {
+  @apply absolute inset-0 object-cover;
+}
+
+.header {
+  @apply mt-5 flex items-start justify-between gap-4;
+}
+
+.title {
+  @apply text-lg font-semibold text-[#1B1B1B];
+}
+
+.owner {
+  @apply mt-1 text-sm text-[#4F4F4F];
+}
+
+.subtitle {
+  @apply mt-1 text-sm text-[#4F4F4F];
+}
+
+.footer {
+  @apply mt-4 flex items-center justify-between gap-4 text-sm text-[#4F4F4F];
+}
+
+.price {
+  @apply text-base font-semibold text-[#1B1B1B];
+}
+
+.button {
+  @apply btn-primary mt-5 w-full;
+}

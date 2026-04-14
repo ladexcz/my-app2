@@ -1,0 +1,205 @@
+/* Buyer Page Styles */
+
+.main {
+  @apply min-h-screen bg-[#F5F5F5] text-[#1B1B1B] pb-24;
+}
+
+.container {
+  @apply container-max;
+}
+
+.heroSection {
+  @apply mb-6 card-base;
+}
+
+.heroContent {
+  @apply flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.heroBadge {
+  @apply text-badge;
+}
+
+.heroTitle {
+  @apply mt-2 text-2xl font-semibold text-[#1B1B1B];
+}
+
+.roleIndicator {
+  @apply rounded-3xl bg-[#F5F5F5] px-4 py-3 text-sm text-[#4F4F4F];
+}
+
+.marketplaceSection {
+  @apply grid gap-5;
+}
+
+.marketplaceGrid {
+  @apply grid-3col;
+}
+
+.bulkOrderCard {
+  @apply card-base;
+}
+
+.bulkOrderTitle {
+  @apply text-lg font-semibold text-[#1B1B1B];
+}
+
+.bulkOrderDescription {
+  @apply mt-2 text-hint;
+}
+
+.bulkOrderItem {
+  @apply flex flex-col gap-3 rounded-3xl border border-[#E0E0E0] bg-[#F5F5F5] p-4 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.bulkOrderName {
+  @apply font-semibold text-[#1B1B1B];
+}
+
+.bulkOrderProgress {
+  @apply mt-1 text-sm text-[#4F4F4F];
+}
+
+.deliverySection {
+  @apply card-base;
+}
+
+.deliveryGrid {
+  @apply grid gap-4 lg:grid-cols-[1.1fr_0.9fr];
+}
+
+.deliveryForm {
+  @apply card-white;
+}
+
+.formGrid {
+  @apply mt-4 grid gap-3 sm:grid-cols-2;
+}
+
+.formLabel {
+  @apply text-hint font-medium;
+}
+
+.formInput {
+  @apply mt-2 input-light;
+}
+
+.mapSection {
+  @apply card-white;
+}
+
+.mapSearchGrid {
+  @apply grid gap-3 sm:grid-cols-[1.6fr_auto];
+}
+
+.mapContainer {
+  @apply mt-5 overflow-hidden rounded-[2rem] border border-[#D8D3BC] bg-[#F6F3E7];
+}
+
+.cartSection {
+  @apply card-base;
+}
+
+.cartHeader {
+  @apply flex items-center justify-between gap-4;
+}
+
+.cartTitle {
+  @apply text-lg font-semibold text-[#1B1B1B];
+}
+
+.cartDescription {
+  @apply mt-1 text-hint;
+}
+
+.cartItems {
+  @apply mt-5 space-y-4;
+}
+
+.cartItem {
+  @apply rounded-3xl border border-[#E0E0E0] bg-[#F5F5F5] p-4;
+}
+
+.cartItemContent {
+  @apply flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.cartItemImage {
+  @apply image-cart-item;
+}
+
+.cartItemInfo {
+  @apply flex items-center gap-4;
+}
+
+.cartItemName {
+  @apply font-semibold text-[#1B1B1B];
+}
+
+.cartItemMeta {
+  @apply text-hint;
+}
+
+.cartItemMinOrder {
+  @apply mt-1 text-small;
+}
+
+.cartItemControls {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+.quantityInput {
+  @apply w-24 rounded-3xl border border-[#D8D3BC] bg-white px-3 py-2 text-center text-sm text-[#1B1B1B] outline-none;
+}
+
+.cartEmpty {
+  @apply text-hint;
+}
+
+.cartTotal {
+  @apply mt-6 space-y-4;
+}
+
+.totalAmount {
+  @apply flex items-center justify-between text-sm font-semibold text-[#1B1B1B];
+}
+
+.checkoutButtons {
+  @apply flex flex-wrap gap-3;
+}
+
+.toast {
+  @apply alert-success;
+}
+
+.toastVisible {
+  @apply opacity-100 blur-0;
+}
+
+.toastHidden {
+  @apply opacity-0 blur-sm;
+}
+
+.modalOverlay {
+  @apply fixed inset-0 z-40 flex items-center justify-center bg-[#0F341050] px-4 py-10 backdrop-blur-sm;
+}
+
+.modal {
+  @apply w-full max-w-md rounded-[2rem] border border-[#D8D3BC] bg-white p-8 text-center shadow-2xl shadow-emerald-200/40;
+}
+
+.modalBadge {
+  @apply text-badge;
+}
+
+.modalTitle {
+  @apply mt-4 text-2xl font-semibold text-[#1B1B1B];
+}
+
+.modalDescription {
+  @apply mt-3 text-sm text-[#4F4F4F];
+}
+
+.modalCheckmark {
+  @apply mt-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#E8F5E9] text-[#2E7D32];
+}

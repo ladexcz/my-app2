@@ -1,0 +1,125 @@
+/* Producer Page Styles */
+
+.main {
+  @apply min-h-screen bg-[#F5F5F5] text-[#1B1B1B] pb-24;
+}
+
+.container {
+  @apply container-max;
+}
+
+.heroSection {
+  @apply mb-6 card-base;
+}
+
+.heroContent {
+  @apply flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.heroBadge {
+  @apply text-badge;
+}
+
+.heroTitle {
+  @apply mt-2 text-2xl font-semibold text-[#1B1B1B];
+}
+
+.heroDescription {
+  @apply mt-2 text-hint;
+}
+
+.inventoryCounter {
+  @apply rounded-3xl bg-[#F5F5F5] px-4 py-3 text-sm text-[#4F4F4F];
+}
+
+.inventoryGrid {
+  @apply grid gap-5 xl:grid-cols-2;
+}
+
+.actionSection {
+  @apply mt-6 grid-2col;
+}
+
+.listingCard {
+  @apply card-base;
+}
+
+.listingTitle {
+  @apply text-lg font-semibold text-[#1B1B1B];
+}
+
+.listingDescription {
+  @apply mt-2 text-hint;
+}
+
+.form {
+  @apply mt-5 space-y-4;
+}
+
+.formGroup {
+  @apply block;
+}
+
+.formLabel {
+  @apply mb-2 block text-label;
+}
+
+.formInput {
+  @apply input-base;
+}
+
+.formGrid {
+  @apply grid gap-4 sm:grid-cols-2;
+}
+
+.imagePreview {
+  @apply rounded-[1.75rem] border border-[#D8D3BC] bg-white p-3;
+}
+
+.previewImage {
+  @apply h-40 w-full rounded-[1.5rem] object-cover;
+}
+
+.submitButton {
+  @apply btn-primary w-full;
+}
+
+.ordersCard {
+  @apply card-base;
+}
+
+.ordersTitle {
+  @apply text-lg font-semibold text-[#1B1B1B];
+}
+
+.ordersDescription {
+  @apply mt-2 text-hint;
+}
+
+.ordersList {
+  @apply mt-5 space-y-4;
+}
+
+.orderItem {
+  @apply rounded-3xl border border-[#E0E0E0] bg-[#F5F5F5] p-4;
+}
+
+.orderItemContent {
+  @apply flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.orderBuyer {
+  @apply font-semibold text-[#1B1B1B];
+}
+
+.orderProduct {
+  @apply mt-1 text-sm text-[#4F4F4F];
+}
+
+.orderStatus {
+  @apply badge-primary;
+}
+
+.fileInput {
+  @apply w-full rounded-3xl border border-[#D8D3BC] bg-white px-4 py-3 text-sm text-[#1B1B1B] outline-none;
+}
