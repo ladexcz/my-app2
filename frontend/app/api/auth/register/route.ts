@@ -1,18 +1,19 @@
 import { NextResponse } from "next/server";
-import { addUser, findUserByEmail } from "../users";
 
 type RegisterRequest = {
   name?: string;
   fullName?: string;
   email?: string;
   password?: string;
+  password_confirmation?: string;
   role?: string;
+  phone?: string;
 };
 
 export async function POST(request: Request) {
   const body = (await request.json()) as RegisterRequest;
   const name = body.name?.trim() || body.fullName?.trim();
-  const { email, password, role } = body;
+  const { email, password, password_confirmation, role, phone } = body;
 
   if (!name || !email || !password || !role) {
     return NextResponse.json(
@@ -21,19 +22,52 @@ export async function POST(request: Request) {
     );
   }
 
-  if (findUserByEmail(email)) {
+  if (!password_confirmation || password !== password_confirmation) {
     return NextResponse.json(
-      { message: "Account already exists." },
-      { status: 409 }
+      { message: "Passwords do not match." },
+      { status: 400 }
     );
   }
 
-  addUser({
-    name: name.trim(),
-    email: email.toLowerCase().trim(),
-    password,
-    role: role as "buyer" | "producer" | "rider" | "admin",
-  });
+  if (!['buyer', 'producer', 'rider'].includes(role)) {
+    return NextResponse.json(
+      { message: "Invalid role." },
+      { status: 400 }
+    );
+  }
 
-  return NextResponse.json({ success: true, user: { name, role } }, { status: 200 });
+  try {
+    // Call Laravel backend
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/auth/register`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email: email.toLowerCase().trim(),
+          password,
+          password_confirmation,
+          role,
+          phone: phone || null,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      return NextResponse.json(data, { status: response.status });
+    }
+
+    return NextResponse.json(data, { status: 201 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Server error: Could not connect to backend" },
+      { status: 500 }
+    );
+  }
 }

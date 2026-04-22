@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { findUserByEmail } from "../users";
 
 type LoginRequest = {
   email?: string;
@@ -9,7 +8,7 @@ type LoginRequest = {
 
 export async function POST(request: Request) {
   const body = (await request.json()) as LoginRequest;
-  const { email, password, role } = body;
+  const { email, password } = body;
 
   if (!email || !password) {
     return NextResponse.json(
@@ -18,37 +17,31 @@ export async function POST(request: Request) {
     );
   }
 
-  const user = findUserByEmail(email);
+  try {
+    // Call Laravel backend
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/auth/login`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    );
 
-  if (!user) {
+    const data = await response.json();
+
+    if (!response.ok) {
+      return NextResponse.json(data, { status: response.status });
+    }
+
+    return NextResponse.json(data, { status: 200 });
+  } catch (error) {
     return NextResponse.json(
-      { message: "Account not found" },
-      { status: 404 }
+      { message: "Server error: Could not connect to backend" },
+      { status: 500 }
     );
   }
-
-  if (role && user.role !== role) {
-    return NextResponse.json(
-      { message: "Selected role does not match this account. Please choose the correct role." },
-      { status: 403 }
-    );
-  }
-
-  if (user.password !== password) {
-    return NextResponse.json(
-      { message: "Incorrect password" },
-      { status: 401 }
-    );
-  }
-
-  return NextResponse.json(
-    {
-      user: {
-        email: user.email,
-        name: user.name,
-        role: user.role,
-      },
-    },
-    { status: 200 }
-  );
 }
